@@ -69,13 +69,13 @@ int main(void)
   HAL_Init();
 
   /* Configure LED1, LED2, LED3 and LED4 */
-  BSP_LED_Init(LED1);
-  BSP_LED_Init(LED2);
-  BSP_LED_Init(LED3);
-  BSP_LED_Init(LED4);
+  //BSP_LED_Init(LED1);
+  //BSP_LED_Init(LED2);
+  //BSP_LED_Init(LED3);
+  //BSP_LED_Init(LED4);
 
   /* Configure Tamper push-button in interrupt mode */
-  BSP_PB_Init(BUTTON_TAMPER, BUTTON_MODE_GPIO);
+  //BSP_PB_Init(BUTTON_TAMPER, BUTTON_MODE_GPIO);
 
   /* Configure the system clock to 400 MHz */
   SystemClock_Config();
@@ -86,7 +86,7 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-    while (BSP_PB_GetState(BUTTON_TAMPER) == KEY_PRESSED)
+    while (1) // FIXME (BSP_PB_GetState(BUTTON_TAMPER) == KEY_PRESSED)
     {
       if (ubKeyNumber == 0x4)
       {
@@ -108,7 +108,7 @@ int main(void)
         }
         HAL_Delay(10);
 
-        while (BSP_PB_GetState(BUTTON_TAMPER) != KEY_NOT_PRESSED)
+        while (1) // FIXME (BSP_PB_GetState(BUTTON_TAMPER) != KEY_NOT_PRESSED)
         {
         }
       }
@@ -338,31 +338,31 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 void LED_Display(uint8_t LedStatus)
 {
   /* Turn OFF all LEDs */
-  BSP_LED_Off(LED1);
-  BSP_LED_Off(LED2);
-  BSP_LED_Off(LED3);
-  BSP_LED_Off(LED4);
+  //BSP_LED_Off(LED1);
+  //BSP_LED_Off(LED2);
+  //BSP_LED_Off(LED3);
+  //BSP_LED_Off(LED4);
 
   switch(LedStatus)
   {
     case (1):
       /* Turn ON LED1 */
-      BSP_LED_On(LED1);
+      //BSP_LED_On(LED1);
       break;
 
     case (2):
       /* Turn ON LED2 */
-      BSP_LED_On(LED2);
+      //BSP_LED_On(LED2);
       break;
 
     case (3):
       /* Turn ON LED3 */
-      BSP_LED_On(LED3);
+      //BSP_LED_On(LED3);
       break;
 
     case (4):
       /* Turn ON LED4 */
-      BSP_LED_On(LED4);
+      //BSP_LED_On(LED4);
       break;
 
     default:
