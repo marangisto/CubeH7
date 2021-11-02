@@ -49,6 +49,11 @@ static void FDCAN_Config(void);
 static void LED_Display(uint8_t LedStatus);
 static void CPU_CACHE_Enable(void);
 
+extern void write_led1(int x);
+extern void write_led2(int x);
+extern void write_led3(int x);
+extern void write_probe(int x);
+
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -56,7 +61,7 @@ static void CPU_CACHE_Enable(void);
   * @param  None
   * @retval None
   */
-int main(void)
+int cmain(void)
 {
   /* Enable the CPU Cache */
   CPU_CACHE_Enable();
@@ -88,12 +93,15 @@ int main(void)
   {
     while (1) // FIXME (BSP_PB_GetState(BUTTON_TAMPER) == KEY_PRESSED)
     {
+    write_led1(1);
       if (ubKeyNumber == 0x4)
       {
         ubKeyNumber = 0x00;
       }
       else
       {
+    write_led2(1);
+    write_probe(1);
         LED_Display(++ubKeyNumber);
 
         /* Set the data to be transmitted */
@@ -106,10 +114,13 @@ int main(void)
           /* Transmission request Error */
           Error_Handler();
         }
-        HAL_Delay(10);
+    write_led3(1);
+        HAL_Delay(50);
 
         while (1) // FIXME (BSP_PB_GetState(BUTTON_TAMPER) != KEY_NOT_PRESSED)
         {
+    write_led3(0);
+    write_probe(0);
         }
       }
     }

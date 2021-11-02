@@ -39,11 +39,11 @@
 #define FDCANx_RELEASE_RESET() __HAL_RCC_FDCAN_RELEASE_RESET()
 
 /* Definition for FDCANx Pins */    
-#define FDCANx_TX_PIN       GPIO_PIN_12
-#define FDCANx_TX_GPIO_PORT GPIOA
+#define FDCANx_TX_PIN       GPIO_PIN_9
+#define FDCANx_TX_GPIO_PORT GPIOB
 #define FDCANx_TX_AF        GPIO_AF9_FDCAN1
-#define FDCANx_RX_PIN       GPIO_PIN_11
-#define FDCANx_RX_GPIO_PORT GPIOA
+#define FDCANx_RX_PIN       GPIO_PIN_8
+#define FDCANx_RX_GPIO_PORT GPIOB
 #define FDCANx_RX_AF        GPIO_AF9_FDCAN1
 
 /* Definition for FDCANx's NVIC IRQ and IRQ Handlers */
