@@ -53,6 +53,7 @@ extern void write_led1(int x);
 extern void write_led2(int x);
 extern void write_led3(int x);
 extern void write_probe(int x);
+extern void setup_mco();
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -88,6 +89,7 @@ int cmain(void)
   /* Configure the FDCAN peripheral */
   FDCAN_Config();
 
+    setup_mco();
   /* Infinite loop */
   while (1)
   {
@@ -138,11 +140,11 @@ int cmain(void)
   *            D2 APB1 Prescaler              = 2 (APB1 Clock  100MHz)
   *            D2 APB2 Prescaler              = 2 (APB2 Clock  100MHz)
   *            D3 APB4 Prescaler              = 2 (APB4 Clock  100MHz)
-  *            HSE Frequency(Hz)              = 25000000
-  *            PLL_M                          = 5
-  *            PLL_N                          = 160
+  *            HSE Frequency(Hz)              = 8000000
+  *            PLL_M                          = 1
+  *            PLL_N                          = 100
   *            PLL_P                          = 2
-  *            PLL_Q                          = 40
+  *            PLL_Q                          = 20
   *            PLL_R                          = 2
   *            VDD(V)                         = 3.3
   *            Flash Latency(WS)              = 4
@@ -173,8 +175,8 @@ static void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
 
-  RCC_OscInitStruct.PLL.PLLM = 5;
-  RCC_OscInitStruct.PLL.PLLN = 160;
+  RCC_OscInitStruct.PLL.PLLM = 1;
+  RCC_OscInitStruct.PLL.PLLN = 100;
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;

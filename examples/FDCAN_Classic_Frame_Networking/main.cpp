@@ -1,4 +1,5 @@
 #include <gpio.h>
+#include <mco.h>
 
 static const pin_t          LED = PB0;
 static const pin_t          LED2 = PE1;
@@ -19,6 +20,7 @@ using led1 = output_t<LED>;
 using led2 = output_t<LED2>;
 using led3 = output_t<LED3>;
 using probe = output_t<PROBE>;
+using mco2 = mco_t<PC9>;
 
 extern "C" void write_led1(int x)
 {
@@ -38,6 +40,11 @@ extern "C" void write_led3(int x)
 extern "C" void write_probe(int x)
 {
     probe::write(x != 0);
+}
+
+extern "C" void setup_mco()
+{
+    mco2::setup<mco_sys, 10>();
 }
 
 int main()
